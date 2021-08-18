@@ -1,0 +1,42 @@
+{
+  "name": "@mrrs878/hooks",
+  "version": "0.0.1",
+  "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+  "keywords": [],
+  "author": "mrrs878 <mrrs878@foxmail.com>",
+  "license": "ISC",
+  "main": "dist/index.cjs.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrrs878/gear.git",
+    "directory": "packages/hooks"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "homepage": "https://github.com/mrrs878/gear#readme",
+  "module": "dist/index.esm.js",
+  "types": "lib/index.d.ts",
+  "unpkg": "dist/index.min.js",
+  "jsdelivr": "dist/index.min.js",
+  "devDependencies": {
+    "@types/js-cookie": "^2.2.7",
+    "js-cookie": "^3.0.0"
+  },
+  "dependencies": {
+    "screenfull": "^5.1.0"
+  },
+  "gitHead": "f40497965af239c42c2dda3014ea26a063da74ca"
+}
