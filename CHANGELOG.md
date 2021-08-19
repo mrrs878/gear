@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/mrrs878/gear/compare/v0.2.1...v0.2.2) (2021-08-19)
+
+
+### Bug Fixes
+
+* 修复@mrrs878/hooks中react依赖问题 ([6b65fb8](https://github.com/mrrs878/gear/commit/6b65fb8ce1f24b0c6f34f3eeb0809fe1cca1bb23))
+
+
+
+
+
 ## [0.2.1](https://github.com/mrrs878/gear/compare/v0.2.0...v0.2.1) (2021-08-19)
 
 
