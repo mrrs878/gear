@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-19 19:52:36
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-19 21:04:45
+ * @LastEditTime: 2021-08-19 21:28:08
  * @FilePath: \gear\packages\drag-verify\src\index.ts
  */
 import { createCanvas, loadImage } from 'canvas';
@@ -62,16 +62,17 @@ async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
     const imageCanvasCtx = imageCanvas.getContext('2d');
     const blockCanvasCtx = blockCanvas.getContext('2d');
 
-    const x = (Math.random() * 200 + 90) >> 0;
-    const y = (Math.random() * 100 + 40) >> 0;
+    const x = (Math.random() * backgroundWidth * 0.75 + backgroundWidth * 0.25) >> 0;
+    const y = (Math.random() * backgroundHeight * 0.75 + backgroundHeight * 0.25) >> 0;
 
-    const blockShapeTmp = (Math.random() * 100) % 3 >> 0;
-    drawLine(imageCanvasCtx, x, y, 'fill', blockShapeTmp, blockWidth, circleRadius);
-    drawLine(blockCanvasCtx, x, y, 'clip', blockShapeTmp, blockWidth, circleRadius);
+    const blockShape = (Math.random() * 100) % 3 >> 0;
+    
+    drawLine(imageCanvasCtx, x, y, 'fill', blockShape, blockWidth, circleRadius);
+    drawLine(blockCanvasCtx, x, y, 'clip', blockShape, blockWidth, circleRadius);
     const image = await loadImage(img);
     blockCanvasCtx?.drawImage(image, 0, 0, backgroundWidth, backgroundHeight);
     imageCanvasCtx?.drawImage(image, 0, 0, backgroundWidth, backgroundHeight);
-    const newY = y - circleRadius * 2 - 1 + BLOCK_POSITION_FIX[blockShapeTmp];
+    const newY = y - circleRadius * 2 - 1 + BLOCK_POSITION_FIX[blockShape];
     const imageData = blockCanvasCtx?.getImageData(x - 3, newY, L, L);
     if (imageData) {
       blockCanvas.width = L;
@@ -80,6 +81,8 @@ async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
     return {
       background: imageCanvas.toDataURL(),
       block: blockCanvas.toDataURL(),
+      positionX: x,
+      positionY: y,
     };
   } catch (e) {
     return {};
