@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mrrs878/gear/compare/v0.2.0...v0.2.1) (2021-08-19)
+
+
+### Performance Improvements
+
+* @mrrs878/sliding-puzzle添加position返回值 ([c7e8e17](https://github.com/mrrs878/gear/commit/c7e8e17f063df9e2682cf799f87b71e162261253))
+
+
+
+
+
 # [0.2.0](https://github.com/mrrs878/gear/compare/v0.1.5...v0.2.0) (2021-08-19)
 
 
