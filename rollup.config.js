@@ -64,7 +64,6 @@ const configs = packages
         },
       ],
       external: [
-        /^codemirror-ssr/,
         'hast-util-sanitize/lib/github.json',
         ...Object.keys(pkg.dependencies || {}),
         ...Object.keys(pkg.peerDependencies || {}),

@@ -31,12 +31,15 @@
   "types": "lib/index.d.ts",
   "unpkg": "dist/index.min.js",
   "jsdelivr": "dist/index.min.js",
-  "devDependencies": {
-    "@types/js-cookie": "^2.2.7",
-    "js-cookie": "^3.0.0"
-  },
   "dependencies": {
+    "@types/js-cookie": "^2.2.7",
+    "js-cookie": "^3.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "screenfull": "^5.1.0"
+  },
+  "peerDependencies": {
+    "react": "*"
   },
   "gitHead": "f40497965af239c42c2dda3014ea26a063da74ca"
 }
