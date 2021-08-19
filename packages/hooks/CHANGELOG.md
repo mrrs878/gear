@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/mrrs878/gear/compare/v0.1.4...v0.1.5) (2021-08-19)
+
+
+### Bug Fixes
+
+* 修改hooks中react依赖为peerDependencies ([75a2624](https://github.com/mrrs878/gear/commit/75a2624959e0994ed418e795e6e88a9c71d6e163))
+
+
+
+
+
 ## [0.1.4](https://github.com/mrrs878/gear/compare/v0.1.3...v0.1.4) (2021-08-18)
 
 
