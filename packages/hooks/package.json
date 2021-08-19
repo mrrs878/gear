@@ -33,15 +33,17 @@
   "jsdelivr": "dist/index.min.js",
   "dependencies": {
     "@types/js-cookie": "^2.2.7",
-    "@types/react": "^17.0.19",
-    "@types/react-dom": "^17.0.9",
     "js-cookie": "^3.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "screenfull": "^5.1.0"
   },
   "peerDependencies": {
     "react": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "gitHead": "f40497965af239c42c2dda3014ea26a063da74ca"
 }

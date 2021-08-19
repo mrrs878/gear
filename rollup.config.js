@@ -75,6 +75,7 @@ const configs = packages
       format: 'umd',
       name: umdName,
       sourcemap: true,
+      globals: {'react': 'react'},
       inlineDynamicImports: true,
     }
 
