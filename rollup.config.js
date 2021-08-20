@@ -1,30 +1,29 @@
 // @ts-check
-import fs from 'fs-extra'
-import path from 'path'
-import _ from 'lodash'
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import json from '@rollup/plugin-json'
-import babel from '@rollup/plugin-babel'
-import { terser } from 'rollup-plugin-terser'
-import replace from '@rollup/plugin-replace'
-// import visualizer from 'rollup-plugin-visualizer';
+import fs from 'fs-extra';
+import path from 'path';
+import _ from 'lodash';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+import babel from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss';
 
-const production = !process.env.ROLLUP_WATCH
-const umd = process.env.UMD
+const production = !process.env.ROLLUP_WATCH;
+const umd = process.env.UMD;
 
-const packages = fs.readdirSync(path.resolve(__dirname, 'packages'))
+const packages = fs.readdirSync(path.resolve(__dirname, 'packages'));
 
 const configs = packages
   .map((key) => {
+    const pkg = fs.readJsonSync(`./packages/${key}/package.json`);
+    if (pkg.private) return [];
 
-    const pkg = fs.readJsonSync(`./packages/${key}/package.json`)
-    if (pkg.private) return []
-
-    const inputFile = path.resolve('packages', key, 'lib/index.js')
+    const inputFile = path.resolve('packages', key, 'lib/index.js');
     const umdName = key.startsWith('plugin-')
       ? _.camelCase(`mrrs878-${key}`)
-      : 'mrrs878'
+      : 'mrrs878';
 
     /** @type {import('rollup').RollupOptions} */
     const common = {
@@ -38,14 +37,17 @@ const configs = packages
         replace({
           preventAssignment: true, // fix warning
           'process.env.NODE_ENV': JSON.stringify(
-            production ? 'production' : 'development'
+            production ? 'production' : 'development',
           ),
+        }),
+        postcss({
+          extract: true,
         }),
       ],
       watch: {
         clearScreen: false,
       },
-    }
+    };
 
     /** @type {import('rollup').RollupOptions} */
     const config = {
@@ -68,16 +70,16 @@ const configs = packages
         ...Object.keys(pkg.dependencies || {}),
         ...Object.keys(pkg.peerDependencies || {}),
       ],
-    }
+    };
 
     /** @type {import('rollup').OutputOptions} */
     const umdOutputOption = {
       format: 'umd',
       name: umdName,
       sourcemap: true,
-      globals: {'react': 'react'},
+      globals: { react: 'react' },
       inlineDynamicImports: true,
-    }
+    };
 
     /** @type {import('rollup').RollupOptions} */
     const umdConfig = {
@@ -94,7 +96,7 @@ const configs = packages
         },
       ],
       external: Object.keys(pkg.peerDependencies || {}),
-    }
+    };
 
     /** @type {import('rollup').RollupOptions} */
     const es5Config = {
@@ -118,16 +120,33 @@ const configs = packages
           extensions: ['.js', '.mjs', '.html'],
         }),
       ],
-    }
-
-    // return [es5Config];
+    };
 
     if (umd) {
-      return [config, umdConfig, es5Config]
-    } else {
-      return [config]
+      return [config, umdConfig, es5Config];
     }
+    return [config];
   })
-  .flat()
+  .flat();
 
-export default configs
+/** @type {import('rollup').RollupOptions} */
+const styleCommon = {
+  input: 'packages/sliding-puzzle/src/dom/index.css',
+  output: {
+    file: 'style.js', // We don't need this file
+  },
+};
+
+const styleConfigs = [
+  {
+    ...styleCommon,
+    plugins: [
+      postcss({
+        extract: path.resolve(__dirname, 'packages/sliding-puzzle/dist/index.css'),
+        minimize: production,
+      }),
+    ],
+  },
+];
+
+export default [...styleConfigs, ...configs];

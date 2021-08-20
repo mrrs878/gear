@@ -15,12 +15,13 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/mrrs878/gear.git",
-    "directory": "packages/drag-verify"
+    "directory": "packages/sliding-puzzle"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -33,6 +34,16 @@
   "unpkg": "dist/index.min.js",
   "jsdelivr": "dist/index.min.js",
   "dependencies": {
-    "canvas": "^2.8.0"
+    "canvas": "^2.8.0",
+    "eslint": "^7.32.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }

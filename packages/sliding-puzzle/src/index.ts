@@ -2,8 +2,8 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-19 19:52:36
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-19 21:28:08
- * @FilePath: \gear\packages\drag-verify\src\index.ts
+ * @LastEditTime: 2021-08-20 20:45:43
+ * @FilePath: \gear\packages\sliding-puzzle\src\index.ts
  */
 import { createCanvas, loadImage } from 'canvas';
 
@@ -11,14 +11,18 @@ const DEFAULT_CONFIG = {
   backgroundWidth: 350,
   backgroundHeight: 200,
   blockWidth: 42,
-  circleRadius: 9,
-}
+};
 
 const { PI } = Math;
 
 const BLOCK_POSITION_FIX = [0, 15, 12];
 
-function drawLine(ctx: any, x: number, y: number, operation: string, shape: number, l: number, r: number) {
+const randomNumber = (min: number, max: number) => Math.ceil(
+  Math.random() * (max - min + 1) + min,
+);
+
+function drawLine(ctx: any, x: number,
+  y: number, operation: string, shape: number, l: number, r: number) {
   if (!ctx) return;
   ctx.beginPath();
   ctx.moveTo(x, y);
@@ -55,18 +59,22 @@ function drawLine(ctx: any, x: number, y: number, operation: string, shape: numb
 
 async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
   try {
-    const { backgroundHeight, backgroundWidth, blockWidth, circleRadius } = config;
+    const {
+      backgroundHeight, backgroundWidth, blockWidth,
+    } = config;
+    const circleRadius = blockWidth / 5;
     const L = blockWidth + circleRadius * 2 + 3;
     const imageCanvas = createCanvas(backgroundWidth, backgroundHeight);
     const blockCanvas = createCanvas(backgroundWidth, backgroundHeight);
     const imageCanvasCtx = imageCanvas.getContext('2d');
     const blockCanvasCtx = blockCanvas.getContext('2d');
 
-    const x = (Math.random() * backgroundWidth * 0.75 + backgroundWidth * 0.25) >> 0;
-    const y = (Math.random() * backgroundHeight * 0.75 + backgroundHeight * 0.25) >> 0;
+    const x = randomNumber(backgroundWidth * 0.25, backgroundWidth * 0.75);
+    const y = randomNumber(backgroundHeight * 0.25, backgroundHeight * 0.75);
 
+    // eslint-disable-next-line no-bitwise
     const blockShape = (Math.random() * 100) % 3 >> 0;
-    
+
     drawLine(imageCanvasCtx, x, y, 'fill', blockShape, blockWidth, circleRadius);
     drawLine(blockCanvasCtx, x, y, 'clip', blockShape, blockWidth, circleRadius);
     const image = await loadImage(img);
@@ -89,4 +97,5 @@ async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
   }
 }
 
-export { getPuzzleImg }
+export { getPuzzleImg };
+export { MVerify } from './dom';

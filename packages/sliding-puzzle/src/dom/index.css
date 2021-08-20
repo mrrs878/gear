@@ -1,0 +1,132 @@
+.puzzle-container {
+  padding: 20px;
+  background-color: #fff;
+  height: 300px;
+  width: 350px;
+  margin: 0 auto;
+  box-sizing: content-box;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.puzzle-block {
+  position: absolute;
+  left: 10px;
+  top: 0;
+}
+ 
+.puzzle-slider-container {
+  position: relative;
+  text-align: center;
+  width: 350px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 15px;
+  background: #f7f9fa;
+  color: #45494c;
+  border: 1px solid #e4e7eb;
+}
+ 
+.puzzle-slider-success .puzzle-slider {
+  height: 38px;
+  top: -1px;
+  border: 1px solid #52CCBA;
+  background-color: #52CCBA !important;
+}
+.puzzle-slider-success .puzzle-slider-mask {
+  width: 100% !important;
+  height: 38px;
+  border: 1px solid #52CCBA;
+  background-color: #D2F4EF;
+}
+.puzzle-slider-success .puzzle-slider {
+  opacity: 0;
+}
+.puzzle-slider-success .puzzle-slider-text {
+  color: #52ccba;
+  position: relative;
+}
+ 
+.puzzle-slider-fail .puzzle-slider {
+  height: 38px;
+  top: -1px;
+  border: 1px solid #f57a7a;
+  background-color: #f57a7a !important;
+}
+ 
+.puzzle-slider-fail .puzzle-slider-mask {
+  height: 38px;
+  border: 1px solid #f57a7a;
+  background-color: #fce1e1;
+}
+
+.puzzle-tip {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  opacity: 0;
+}
+.puzzle-tip.success {
+  color: #13d4b7;
+  opacity: 1;
+}
+.puzzle-tip.fail {
+  color: #f00;
+  opacity: 1;
+}
+ 
+.puzzle-slider-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px;
+  border: 0 solid #1991FA;
+  background: #D1E9FE;
+  transition: background .2s liner;
+}
+ 
+.puzzle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  cursor: move;
+  transition: background .2s linear;
+}
+ 
+.puzzle-slider:hover {
+  background: #1991FA;
+}
+ 
+.puzzle-slider:hover .puzzle-slider-icon {
+  filter: contrast(100);
+}
+ 
+.puzzle-slider-icon {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 34px;
+  height: 34px;
+}
+ 
+.puzzle-refresh {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  background-size: 34px 471px;
+  z-index: 9;
+}
+.puzzle-refresh:active {
+  opacity: 0.5;
+}
