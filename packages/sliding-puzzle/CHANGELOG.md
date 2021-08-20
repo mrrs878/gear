@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2021-08-20)
+
+
+### Performance Improvements
+
+* @mrrs878/sliding-puzzle添加MVerify ([7fb8f4f](https://github.com/mrrs878/gear/commit/7fb8f4fdd2aa79c8bb55ff2f1bb537ca762c3229))
+
+
+
+
+
 ## [0.2.1](https://github.com/mrrs878/gear/compare/v0.2.0...v0.2.1) (2021-08-19)
 
 
