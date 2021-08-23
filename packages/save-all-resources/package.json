@@ -1,0 +1,38 @@
+{
+  "name": "@mrrs878/save-all-resources",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "mrrs878 <mrrs878@foxmail.com>",
+  "homepage": "https://github.com/mrrs878/gear#readme",
+  "license": "ISC",
+  "main": "dist/index.cjs.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrrs878/gear.git",
+    "directory": "packages/save-all-resources"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/mrrs878/gear/issues"
+  },
+  "dependencies": {
+    "puppeteer": "^10.2.0"
+  },
+  "module": "dist/index.esm.js",
+  "types": "lib/index.d.ts",
+  "unpkg": "dist/index.min.js",
+  "jsdelivr": "dist/index.min.js"
+}
