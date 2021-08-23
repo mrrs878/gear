@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.2](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.2.2...@mrrs878/sliding-puzzle@0.0.2) (2021-08-23)
+
+
+### Bug Fixes
+
+* 修改版本号 ([21f4ff8](https://github.com/mrrs878/gear/commit/21f4ff8a7e165a05530030ffe84b8221e77ccdd0))
+
+
+
+
+
 ## 0.2.2 (2021-08-20)
 
 
