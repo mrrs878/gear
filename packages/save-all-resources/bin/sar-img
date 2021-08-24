@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const inquirer = require('inquirer');
-const chalk = require('chalk');
 const { save2Img } = require('@mrrs878/save-all-resources');
 
 const question = [
@@ -36,6 +35,4 @@ inquirer
     console.log(`url: ${url}`);
     console.log(`fileName: ${fileName}`);
     await save2Img({ url, fileName });
-    console.log(chalk.green('The latest template list is: \n'));
-    console.log('\n');
   });

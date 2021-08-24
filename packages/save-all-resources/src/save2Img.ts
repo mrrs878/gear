@@ -2,49 +2,11 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-23 20:57:28
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-24 17:37:28
+ * @LastEditTime: 2021-08-24 20:28:41
  * @FilePath: \gear\packages\save-all-resources\src\save2Img.ts
  */
 import puppeteer, { Page } from 'puppeteer';
-import ora from 'ora';
 
-const spinner = ora({
-  spinner: {
-    interval: 80,
-    frames: [
-      '⠁',
-      '⠁',
-      '⠉',
-      '⠙',
-      '⠚',
-      '⠒',
-      '⠂',
-      '⠂',
-      '⠒',
-      '⠲',
-      '⠴',
-      '⠤',
-      '⠄',
-      '⠄',
-      '⠤',
-      '⠠',
-      '⠠',
-      '⠤',
-      '⠦',
-      '⠖',
-      '⠒',
-      '⠐',
-      '⠐',
-      '⠒',
-      '⠓',
-      '⠋',
-      '⠉',
-      '⠈',
-      '⠈',
-    ],
-  },
-  text: 'scrolling page...',
-});
 interface IOptions {
   url: string;
   fileName: string;
@@ -62,7 +24,6 @@ async function autoScroll(page: Page) {
       // 滚动条向下滚动 distance
       window.scrollBy(0, distance);
       totalHeight += distance;
-      spinner.text = `scrolling page(${((totalHeight / scrollHeight) * 100).toFixed(2)}%)`;
       // 当滚动的总高度 大于 页面高度 说明滚到底了。也就是说到滚动条滚到底时，以上还会继续累加，直到超过页面高度
       if (totalHeight >= scrollHeight) {
         clearInterval(timer);
@@ -82,10 +43,9 @@ async function bootstrap(options: IOptions) {
     await page.goto(options.url);
     console.log('page loaded');
     page.on('console', (consoleObj) => console.log(consoleObj.text()));
-    console.log('start screenshot');
-    spinner.start();
+    console.log('scrolling...');
     await autoScroll(page);
-    spinner.succeed();
+    console.log('start screenshot');
     await page.screenshot({
       path: options.fileName,
       fullPage: true,
