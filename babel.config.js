@@ -1,3 +1,10 @@
+/*
+ * @Author: mrrs878@foxmail.com
+ * @Date: 2021-08-18 20:47:59
+ * @LastEditors: mrrs878@foxmail.com
+ * @LastEditTime: 2021-08-24 20:30:51
+ * @FilePath: \gear\babel.config.js
+ */
 module.exports = {
   presets: [
     [
@@ -21,4 +28,4 @@ module.exports = {
       ],
     },
   },
-}
+};
