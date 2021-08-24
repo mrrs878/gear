@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const package = require('../package.json');
+
+// 定义当前版本
+// 定义使用方法
+// 定义四个指令
+program
+  .version(package.version)
+  .usage('<command> [options]')
+  .command('img', 'save page as an image')
+  .command('zip', 'save all resources as a zip folder');
+
+// 解析命令行参数
+program.parse(process.argv);

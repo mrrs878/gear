@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+const inquirer = require('inquirer');
+const chalk = require('chalk');
+const { save2Img } = require('@mrrs878/save-all-resources');
+
+const question = [
+  {
+    name: 'url',
+    type: 'input',
+    message: '请输入页面地址(eg. http://xxx.com)',
+    validate(val) {
+      if (val === '') {
+        return 'url is required!';
+      }
+      return true;
+    },
+  },
+  {
+    name: 'folder',
+    type: 'input',
+    message: '请输入保存目录(默认为当前目录)',
+    default: process.cwd(),
+  },
+  {
+    name: 'fileName',
+    type: 'input',
+    message: '请输入保存文件名称(full.png)',
+    default: 'full.png',
+  },
+];
+
+inquirer
+  .prompt(question).then(async (answers) => {
+    const { url, fileName } = answers;
+    console.log(`url: ${url}`);
+    console.log(`fileName: ${fileName}`);
+    await save2Img({ url, fileName });
+    console.log(chalk.green('The latest template list is: \n'));
+    console.log('\n');
+  });

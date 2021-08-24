@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-20 11:26:26
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-20 16:07:36
+ * @LastEditTime: 2021-08-24 16:06:29
  * @FilePath: \gear\.eslintrc.js
  */
 module.exports = {
@@ -24,5 +24,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'react/destructuring-assignment': [0],
     'import/prefer-default-export': 0,
+    'import/no-extraneous-dependencies': 0,
   },
 };

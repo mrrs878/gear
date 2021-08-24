@@ -32,6 +32,7 @@ const configs = packages
         commonjs(),
         resolve({
           browser: true,
+          preferBuiltins: false,
         }),
         json(),
         replace({

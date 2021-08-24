@@ -1,6 +1,6 @@
 {
   "name": "@mrrs878/save-all-resources",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "mrrs878 <mrrs878@foxmail.com>",
   "homepage": "https://github.com/mrrs878/gear#readme",
@@ -25,10 +25,18 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
+  "bin": {
+    "sar": "bin/sar",
+    "sar-img": "bin/sar-img"
+  },
   "bugs": {
     "url": "https://github.com/mrrs878/gear/issues"
   },
   "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.1.0",
+    "inquirer": "^8.1.2",
+    "ora": "^6.0.0",
     "puppeteer": "^10.2.0"
   },
   "module": "dist/index.esm.js",
