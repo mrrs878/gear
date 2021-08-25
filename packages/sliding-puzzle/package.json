@@ -34,8 +34,7 @@
   "unpkg": "dist/index.min.js",
   "jsdelivr": "dist/index.min.js",
   "dependencies": {
-    "canvas": "^2.8.0",
-    "eslint": "^7.32.0"
+    "canvas": "^2.8.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.19",
