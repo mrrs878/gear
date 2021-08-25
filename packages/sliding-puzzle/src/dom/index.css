@@ -132,39 +132,3 @@
 .puzzle-refresh:active {
   opacity: 0.5;
 }
-
-.loading {
-  position: relative;
-}
-.loading::before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: '';
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1;
-}
-.loading::after {
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: url(./loading.svg);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: loading infinite 2s linear;
-}
-@keyframes loading {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
