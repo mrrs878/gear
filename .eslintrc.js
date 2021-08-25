@@ -2,17 +2,24 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-20 11:26:26
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-24 16:06:29
+ * @LastEditTime: 2021-08-25 21:16:34
  * @FilePath: \gear\.eslintrc.js
  */
 module.exports = {
   extends: [
     'airbnb-typescript',
-    'airbnb/hooks',
+    'plugin:react-hooks/recommended',
   ],
+  plugins: ['react', 'react-hooks'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
     createDefaultProgram: true,
+  },
+  env: {
+    node: true,
+    browser: true,
+    jest: true,
   },
   ignorePatterns: ['**/dist/*', '**/lib/*'],
   rules: {
