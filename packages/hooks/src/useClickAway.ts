@@ -1,10 +1,10 @@
 /*
 * @Author: mrrs878@foxmail.com
 * @Date: 2020-12-31 12:47:00
- * @LastEditTime: 2021-08-18 17:58:42
+ * @LastEditTime: 2021-08-25 22:16:07
  * @LastEditors: mrrs878@foxmail.com
 * @Description: In User Settings Edit
- * @FilePath: \wrench\packages\hooks\src\useClickAway.ts
+ * @FilePath: \gear\packages\hooks\src\useClickAway.ts
 */
 import { useEffect, useRef } from 'react';
 import { BasicTarget, getTargetElement } from './tools/dom';
@@ -13,7 +13,11 @@ const defaultEvent = 'click';
 
 type EventType = MouseEvent | TouchEvent;
 
-function useClickAway(onClickAway: (event: EventType) => void, target: BasicTarget | Array<BasicTarget>, eventName: string = defaultEvent) {
+function useClickAway(
+  onClickAway: (event: EventType) => void,
+  target: BasicTarget | Array<BasicTarget>,
+  eventName: string = defaultEvent,
+) {
   const onClickAwayRef = useRef(onClickAway);
   onClickAwayRef.current = onClickAway;
 

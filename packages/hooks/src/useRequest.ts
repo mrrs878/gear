@@ -1,10 +1,10 @@
 /*
  * @Author: mrrs878
  * @Date: 2020-12-08 22:50:25
- * @LastEditTime: 2020-12-09 16:15:15
- * @LastEditors: mrrs878
+ * @LastEditTime: 2021-08-25 22:15:54
+ * @LastEditors: mrrs878@foxmail.com
  * @Description: useRequest hook
- * @FilePath: \jsLibrary\src\react\hooks\useRequest.ts
+ * @FilePath: \gear\packages\hooks\src\useRequest.ts
  */
 import { useEffect, useState, useCallback } from 'react';
 
@@ -18,7 +18,7 @@ import { useEffect, useState, useCallback } from 'react';
  * @returns 重新发送请求(使用上一次的参数)
 */
 function useRequest<P, T>(api: (params: P) => Promise<T>, visible = true, params?: P)
-  : [boolean, T|undefined, (params?: P) => void, () => void] {
+  : [boolean, T | undefined, (params?: P) => void, () => void] {
   const [res, setRes] = useState<T>();
   const [loading, setLoading] = useState(() => false);
   const [newParams, setNewParams] = useState(() => params);
@@ -38,10 +38,13 @@ function useRequest<P, T>(api: (params: P) => Promise<T>, visible = true, params
     fetch();
   }, [fetch]);
 
-  const doFetch = useCallback((rest = null) => {
-    setNewParams(rest);
-    setAutoFetch(true);
-  }, []);
+  const doFetch = useCallback(async (rest = null) => {
+    setLoading(true);
+    const tmp = await api(rest);
+    setRes(tmp);
+    setLoading(false);
+    return tmp;
+  }, [api]);
 
   return [loading, res, doFetch, fetch];
 }
