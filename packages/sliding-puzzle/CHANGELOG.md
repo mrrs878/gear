@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.5](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.4...@mrrs878/sliding-puzzle@0.0.5) (2021-08-26)
+
+
+### Performance Improvements
+
+* 修改canvas中源、目图像合成方式(globalCompositeOperation ) ([9286ef7](https://github.com/mrrs878/gear/commit/9286ef781ae53351f859db67dec757cd1df1c6de))
+
+
+
+
+
 ## [0.0.4](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.3...@mrrs878/sliding-puzzle@0.0.4) (2021-08-25)
 
 
