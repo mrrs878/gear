@@ -26,6 +26,9 @@ fs.writeJsonSync(
   path.resolve(rootDir, 'tsconfig.json'),
   {
     files: [],
+    compilerOptions: {
+      jsx: 'react',
+    },
     references: packages.map((p) => ({ path: `packages/${p}` })),
   },
   { spaces: 2 },
