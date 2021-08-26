@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-20 11:17:40
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-25 19:08:38
+ * @LastEditTime: 2021-08-26 10:29:52
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\index.tsx
  */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -38,7 +38,7 @@ enum VerifyStatus {
   fail,
 }
 
-const VerifyTip: Record<VerifyStatus, string> = {
+const VERIFY_TIPS: Record<VerifyStatus, string> = {
   [VerifyStatus.fail]: '验证失败，请重试',
   [VerifyStatus.pending]: '',
   [VerifyStatus.success]: '验证成功',
@@ -200,7 +200,7 @@ const MVerify = (props: IMVerifyProps) => {
             ${verifyStatus === VerifyStatus.fail ? 'puzzle-tip-fail' : ''}
           `}
             >
-              { VerifyTip[verifyStatus] }
+              { VERIFY_TIPS[verifyStatus] }
             </span>
           </>
         </Spin>

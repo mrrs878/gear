@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-19 19:52:36
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-20 20:45:43
+ * @LastEditTime: 2021-08-26 15:25:31
  * @FilePath: \gear\packages\sliding-puzzle\src\index.ts
  */
 import { createCanvas, loadImage } from 'canvas';
@@ -54,7 +54,7 @@ function drawLine(ctx: any, x: number,
   ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
   ctx.stroke();
   ctx[operation]();
-  ctx.globalCompositeOperation = 'overlay';
+  ctx.globalCompositeOperation = 'destination-over';
 }
 
 async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
