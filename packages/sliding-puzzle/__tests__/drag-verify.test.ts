@@ -10,7 +10,7 @@ import { getPuzzleImg } from '../src';
 
 describe('drag-verify', () => {
   it('needs tests', async () => {
-    const res = await getPuzzleImg('https://img2.baidu.com/it/u=1759559009,1100199201&fm=26&fmt=auto&gp=0.jpg');
+    const res = await getPuzzleImg('https://avatars.githubusercontent.com/u/7506913?v=4');
     expect(res).toHaveProperty('background');
   });
 });
