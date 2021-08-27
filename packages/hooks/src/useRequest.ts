@@ -1,7 +1,7 @@
 /*
  * @Author: mrrs878
  * @Date: 2020-12-08 22:50:25
- * @LastEditTime: 2021-08-26 21:51:04
+ * @LastEditTime: 2021-08-27 20:31:33
  * @LastEditors: mrrs878@foxmail.com
  * @Description: useRequest hook
  * @FilePath: \gear\packages\hooks\src\useRequest.ts
@@ -17,7 +17,7 @@ import { useEffect, useState, useCallback } from 'react';
  * @returns 手动发送请求
  * @returns 重新发送请求(使用上一次的参数)
 */
-function useRequest<P, T>(api: (params?: P) => Promise<T>, visible = true, params?: P)
+function useRequest<P, T>(api: (params: P) => Promise<T>, visible = true, params?: P)
   : [boolean, T | undefined, (params?: P) => Promise<T>, () => Promise<T>] {
   const [res, setRes] = useState<T>();
   const [loading, setLoading] = useState(() => false);
