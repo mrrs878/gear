@@ -5,4 +5,6 @@
  * @LastEditTime: 2021-08-18 16:21:59
  * @FilePath: \bytemd\README.md
 -->
+[![Coverage Status](https://coveralls.io/repos/github/mrrs878/gear/badge.svg?branch=main)](https://coveralls.io/github/mrrs878/gear?branch=main)
+
 packages/hooks/README.md
