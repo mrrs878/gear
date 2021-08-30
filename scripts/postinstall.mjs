@@ -28,6 +28,13 @@ fs.writeJsonSync(
     files: [],
     compilerOptions: {
       jsx: 'react',
+      lib: [
+        'dom',
+        'dom.iterable',
+        'esnext',
+      ],
+      esModuleInterop: true,
+      allowSyntheticDefaultImports: true,
     },
     references: packages.map((p) => ({ path: `packages/${p}` })),
   },
