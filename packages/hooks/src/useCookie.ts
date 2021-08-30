@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-02-01 22:33:02
- * @LastEditTime: 2021-08-18 17:59:47
+ * @LastEditTime: 2021-08-30 20:37:26
  * @LastEditors: mrrs878@foxmail.com
  * @Description: In User Settings Edit
- * @FilePath: \wrench\packages\hooks\src\useCookie.ts
+ * @FilePath: \gear\packages\hooks\src\useCookie.ts
  */
 import Cookies from 'js-cookie';
 import { useCallback, useState } from 'react';
@@ -16,12 +16,12 @@ interface OptionsI extends CookieOptionsT {
   defaultValue?: CookieStateT | (() => CookieStateT)
 }
 
-const useCookie = (cookieKey: string, options: OptionsI) => {
+const useCookie = (cookieKey: string, options?: OptionsI) => {
   const [state, setState] = useState<CookieStateT>(() => {
     const cookieValue = Cookies.get(cookieKey);
     if (typeof cookieValue === 'string') return cookieValue;
-    if (typeof options.defaultValue === 'function') return options.defaultValue();
-    return options.defaultValue;
+    if (typeof options?.defaultValue === 'function') return options?.defaultValue();
+    return options?.defaultValue;
   });
 
   const updateState = useCallback((
