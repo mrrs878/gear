@@ -10,6 +10,7 @@ program
   .version(package.version)
   .usage('<command> [options]')
   .command('img', 'save page as an image')
+  .command('pdf', 'save page as a pdf')
   .command('zip', 'save all resources as a zip folder');
 
 // 解析命令行参数
