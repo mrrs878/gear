@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-01 19:32:59
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-01 20:44:32
+ * @LastEditTime: 2021-09-01 21:04:19
  * @FilePath: \gear\packages\save-all-resources\src\save2pdf.ts
  */
 import puppeteer, { PDFOptions } from 'puppeteer';
