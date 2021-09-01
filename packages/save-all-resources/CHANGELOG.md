@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/mrrs878/gear/compare/@mrrs878/save-all-resources@0.1.0...@mrrs878/save-all-resources@0.2.0) (2021-09-01)
+
+
+### Features
+
+* 添加save2pdf ([bfba652](https://github.com/mrrs878/gear/commit/bfba6520dc63cf7f0de74bb3192c78291c5e6c5d))
+
+
+
+
+
 # 0.1.0 (2021-08-24)
 
 
