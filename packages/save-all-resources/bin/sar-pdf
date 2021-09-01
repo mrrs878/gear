@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+const inquirer = require('inquirer');
+// const { save2pdf } = require('@mrrs878/save-all-resources');
+const URL_REG = /^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?=?&?[a-zA-Z0-9_-](\?)?)*)*$/i;
+
+const question = [
+  {
+    name: 'url',
+    type: 'input',
+    message: '请输入页面地址(http://xxx.com)',
+    validate(val) {
+      if (val === '') {
+        return 'url is required!';
+      }
+      if (!URL_REG.test(val)) {
+        return 'url is required!';
+      }
+      return true;
+    },
+  },
+  {
+    name: 'folder',
+    type: 'input',
+    message: '请输入保存目录(默认为当前目录)',
+    default: process.cwd(),
+  },
+  {
+    name: 'fileName',
+    type: 'input',
+    message: '请输入保存文件名称',
+    default: 'full.pdf',
+  },
+  {
+    name: 'displayHeaderFooter',
+    type: 'confirm',
+    message: '是否显示头部/尾部',
+    default: false,
+  },
+  {
+    name: 'printBackground',
+    type: 'confirm',
+    message: '是否显示背景',
+    default: false,
+  },
+  {
+    name: 'omitBackground',
+    type: 'confirm',
+    message: '是否生成透明背景',
+    default: false,
+  },
+  {
+    name: 'format',
+    type: 'list',
+    message: '页面格式',
+    choices: ['letter', 'legal', 'tabloid', 'ledger', 'a0', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
+    default: 'letter',
+  },
+];
+
+inquirer
+  .prompt(question).then(async (answers) => {
+    const { url, fileName } = answers;
+    console.log(`url: ${url}`);
+    console.log(`fileName: ${fileName}`);
+    // await save2pdf(answers);
+    console.log(answers);
+  });

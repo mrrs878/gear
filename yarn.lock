@@ -5838,6 +5838,17 @@ jest-runtime@^27.0.6:
     strip-bom "^4.0.0"
     yargs "^16.0.3"
 
+jest-screenshot@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/jest-screenshot/-/jest-screenshot-0.3.5.tgz#2b0da0ac025e9b800e021edaaff84a3b296dd263"
+  integrity sha512-CAzw7M5VDimZNAPRsCpZ3IbybYQxuWuxUlk8TOc7UQ/zMF0gUpGWKJgIxG644SaoAJhGSD2oRYFa4Z7F+KU1sQ==
+  dependencies:
+    chalk "^3.0.0"
+    lodash.kebabcase "^4.1.1"
+    mkdirp "^1.0.4"
+    native-image-diff "^0.1.14"
+    node-libpng "^0.2.20"
+
 jest-serializer@^27.0.6:
   version "27.0.6"
   resolved "https://registry.yarnpkg.com/jest-serializer/-/jest-serializer-27.0.6.tgz#93a6c74e0132b81a2d54623251c46c498bb5bec1"
@@ -6299,6 +6310,11 @@ lodash.ismatch@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.ismatch/-/lodash.ismatch-4.4.0.tgz#756cb5150ca3ba6f11085a78849645f188f85f37"
   integrity sha1-dWy1FQyjum8RCFp4hJZF8Yj4Xzc=
 
+lodash.kebabcase@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
+  integrity sha1-hImxyw0p/4gZXM7KRI/21swpXDY=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -6717,6 +6733,13 @@ nanoid@^3.1.22, nanoid@^3.1.23:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.25.tgz#09ca32747c0e543f0e1814b7d3793477f9c8e152"
   integrity sha512-rdwtIXaXCLFAQbnfqDRnI6jaRHp9fTcYBjtFKE8eezcZ7LuLjhUaQGNeMXf1HmRoCH32CLz6XwX0TtxEOS/A3Q==
 
+native-image-diff@^0.1.14:
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/native-image-diff/-/native-image-diff-0.1.14.tgz#f5dc337b2ffbca3da4a6923524254d41a98acabf"
+  integrity sha512-E9kEAKZn7DvJznFyq/QxtE1b5HDyBcZN7fcYXwKvRHYZ7CY0/rynLoPKHDf/8n3kj6IwjACXC/EG3sor5tfXoQ==
+  dependencies:
+    request "^2.88.2"
+
 native-request@^1.0.5:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/native-request/-/native-request-1.0.9.tgz#2269748379c004415d9721c204d8da3455abc175"
@@ -6784,6 +6807,13 @@ node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
   integrity sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=
+
+node-libpng@^0.2.20:
+  version "0.2.20"
+  resolved "https://registry.yarnpkg.com/node-libpng/-/node-libpng-0.2.20.tgz#788f9e3b8e091478b51a20296ceba0098a9ec31e"
+  integrity sha512-2r6y7Z3svNlSip+Dwper6NeuUgI5BDEeI/1daZI4X+VKpOFS6ymhU3kIPZpzN+5qusYOw/grJGfSRoZdBhyx2A==
+  dependencies:
+    request "^2.88.2"
 
 node-modules-regexp@^1.0.0:
   version "1.0.0"

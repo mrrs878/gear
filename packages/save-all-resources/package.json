@@ -27,7 +27,8 @@
   },
   "bin": {
     "sar": "bin/sar",
-    "sar-img": "bin/sar-img"
+    "sar-img": "bin/sar-img",
+    "sar-pdf": "bin/sar-pdf"
   },
   "bugs": {
     "url": "https://github.com/mrrs878/gear/issues"
