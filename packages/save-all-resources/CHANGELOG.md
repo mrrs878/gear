@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/mrrs878/gear/compare/@mrrs878/save-all-resources@0.2.1...@mrrs878/save-all-resources@0.2.2) (2021-09-01)
+
+
+### Bug Fixes
+
+* 修复sar-pdf无法正常工作的bug ([f790ab5](https://github.com/mrrs878/gear/commit/f790ab5905aa367ad5d36969b97185ac4a9bcc34))
+
+
+
+
+
 ## [0.2.1](https://github.com/mrrs878/gear/compare/@mrrs878/save-all-resources@0.2.0...@mrrs878/save-all-resources@0.2.1) (2021-09-01)
 
 
