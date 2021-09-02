@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/mrrs878/gear/compare/@mrrs878/save-all-resources@0.2.2...@mrrs878/save-all-resources@0.2.3) (2021-09-02)
+
+
+### Bug Fixes
+
+* 删除save3pdf.ts ([507d09b](https://github.com/mrrs878/gear/commit/507d09bab87d82474beaf712b7186aca6abb4acc))
+* 修复函数名引用错误的bug ([6e654ea](https://github.com/mrrs878/gear/commit/6e654ea058bc84047ef875419ca89ad5f6587f8a))
+
+
+
+
+
 ## [0.2.2](https://github.com/mrrs878/gear/compare/@mrrs878/save-all-resources@0.2.1...@mrrs878/save-all-resources@0.2.2) (2021-09-01)
 
 
