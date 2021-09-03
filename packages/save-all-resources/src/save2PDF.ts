@@ -2,10 +2,11 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-01 19:32:59
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-01 21:51:41
+ * @LastEditTime: 2021-09-03 19:54:21
  * @FilePath: \gear\packages\save-all-resources\src\save2PDF.ts
  */
 import puppeteer, { PDFOptions } from 'puppeteer';
+import { autoScroll } from './tool';
 
 type IPdfOptions = Exclude<PDFOptions, 'path'>;
 
@@ -24,12 +25,11 @@ async function bootstrap(options: IOptions) {
     await page.goto(options.url);
     console.log('page loaded');
     page.on('console', (consoleObj) => console.log(consoleObj.text()));
+    console.log('scrolling...');
+    await autoScroll(page);
     console.log('printing...');
-
     const pdfOptions = JSON.parse(JSON.stringify(options));
     Reflect.deleteProperty(pdfOptions, 'url');
-    Reflect.deleteProperty(pdfOptions, 'filename');
-    pdfOptions.path = options.fileName;
     await page.pdf(pdfOptions);
 
     console.log('hooray, succeeded');

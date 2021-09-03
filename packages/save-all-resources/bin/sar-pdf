@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const inquirer = require('inquirer');
+const path = require('path');
 const { save2PDF } = require('@mrrs878/save-all-resources');
 
 const URL_REG = /^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?=?&?[a-zA-Z0-9_-](\?)?)*)*$/i;
@@ -61,8 +62,8 @@ const question = [
 
 inquirer
   .prompt(question).then(async (answers) => {
-    const { url, fileName } = answers;
+    const { url, fileName, folder } = answers;
     console.log(`url: ${url}`);
-    console.log(`fileName: ${fileName}`);
-    await save2PDF(answers);
+    console.log(`path: ${path.resolve(folder, fileName)}`);
+    await save2PDF({ ...answers, path: path.resolve(folder, fileName) });
   });
