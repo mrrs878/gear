@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/mrrs878/gear/compare/@mrrs878/save-all-resources@0.2.3...@mrrs878/save-all-resources@0.2.4) (2021-09-03)
+
+
+### Bug Fixes
+
+* 修复自定义路径不起作用的bug ([c71e57f](https://github.com/mrrs878/gear/commit/c71e57fb1ff0ffdd9f9775bbe7b7ea247c8ad5fe))
+
+
+
+
+
 ## [0.2.3](https://github.com/mrrs878/gear/compare/@mrrs878/save-all-resources@0.2.2...@mrrs878/save-all-resources@0.2.3) (2021-09-02)
 
 
