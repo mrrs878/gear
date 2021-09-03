@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-01 20:43:51
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-01 20:51:16
+ * @LastEditTime: 2021-09-03 20:08:56
  * @FilePath: \gear\packages\save-all-resources\__tests__\save2pdf.test.ts
  */
 import puppeteer from 'puppeteer';
@@ -20,6 +20,6 @@ describe('save2pdf tests', () => {
   });
 
   it('save2pdf', async () => {
-    await save2PDF({ url: 'https://www.baidu.com', fileName: path.resolve(process.cwd(), 'full.pdf') });
+    await save2PDF({ url: 'https://www.npmjs.com', fileName: path.resolve(process.cwd(), 'full.pdf') });
   });
 });
