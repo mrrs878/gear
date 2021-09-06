@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+const path = require('path');
+
+const tplObj = require(path.resolve(__dirname, '../template.json'));
+
+console.log(tplObj)
