@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+const path = require('path');
+const fs = require('fs');
+
+if (!fs.existsSync(path.resolve(__dirname, '../template.json'))) {
+  fs.writeFileSync(path.resolve(__dirname, '../template.json'), '{}');
+}
+
+const tplObj = require(path.resolve(__dirname, '../template.json'));
 
 program
   .version(require('../package.json').version)
