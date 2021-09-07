@@ -1,21 +1,5 @@
 #!/usr/bin/env node
 
-const program = require('commander');
-const path = require('path');
-const fs = require('fs');
+const { cli } = require('../dist/index.cjs');
 
-if (!fs.existsSync(path.resolve(__dirname, '../template.json'))) {
-  fs.writeFileSync(path.resolve(__dirname, '../template.json'), '{}');
-}
-
-const tplObj = require(path.resolve(__dirname, '../template.json'));
-
-program
-  .version(require('../package.json').version)
-  .usage('<command> [options]')
-  .command('add', 'add a new template')
-  .command('del', 'delete a template')
-  .command('list', 'list all the templates')
-  .command('init', 'generate a new project from a template');
-
-program.parse(process.argv);
+cli();

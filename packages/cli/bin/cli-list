@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-const path = require('path');
+const { list } = require('../dist/index.cjs');
 
-const tplObj = require(path.resolve(__dirname, '../template.json'));
-
-console.log(tplObj)
+list();
