@@ -13,7 +13,7 @@
   "bin": {
     "cli": "bin/cli",
     "cli-add": "bin/cli-add",
-    "cli-list": "bin/cli-list",
+    "cli-ls": "bin/cli-ls",
     "cli-init": "bin/cli-init",
     "cli-del": "bin/cli-del"
   },
