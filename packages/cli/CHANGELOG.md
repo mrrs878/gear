@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/mrrs878/gear/compare/@mrrs878/cli@0.1.0...@mrrs878/cli@0.1.1) (2021-09-08)
+
+
+### Bug Fixes
+
+* 修复执行cli ls时not found ([51874c0](https://github.com/mrrs878/gear/commit/51874c0692a26957c723c38caf7a738a6f61a5f1))
+
+
+
+
+
 # 0.1.0 (2021-09-07)
 
 
