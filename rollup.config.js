@@ -1,7 +1,6 @@
 // @ts-check
 import fs from 'fs-extra';
 import path from 'path';
-import _ from 'lodash';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
@@ -21,9 +20,6 @@ const configs = packages
     if (pkg.private) return [];
 
     const inputFile = path.resolve('packages', key, 'lib/index.js');
-    const umdName = key.startsWith('plugin-')
-      ? _.camelCase(`mrrs878-${key}`)
-      : 'mrrs878';
 
     /** @type {import('rollup').RollupOptions} */
     const common = {
@@ -83,9 +79,9 @@ const configs = packages
     };
 
     /** @type {import('rollup').OutputOptions} */
-    const umdOutputOption = {
-      format: 'umd',
-      name: umdName,
+    const es5OutputOption = {
+      format: 'cjs',
+      // name: umdName,
       sourcemap: true,
       globals: { react: 'react' },
       inlineDynamicImports: true,
@@ -97,11 +93,11 @@ const configs = packages
       input: path.resolve('packages', key, 'lib/index.js'),
       output: [
         {
-          ...umdOutputOption,
+          ...es5OutputOption,
           file: path.resolve('packages', key, 'dist/index.es5.js'),
         },
         {
-          ...umdOutputOption,
+          ...es5OutputOption,
           file: path.resolve('packages', key, 'dist/index.es5.min.js'),
           plugins: [terser()],
         },

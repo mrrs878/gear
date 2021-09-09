@@ -2,24 +2,11 @@
 // @ts-check
 import fs from 'fs-extra';
 import path from 'path';
-import mustache from 'mustache';
-import _ from 'lodash';
 // @ts-ignore
 import { rootDir } from './utils.mjs';
 
-function readFileSyncSafe(p) {
-  try {
-    return fs.readFileSync(p, 'utf8');
-  } catch (err) {
-    return '';
-  }
-}
-
 const packagesDir = path.join(rootDir, 'packages');
 const packages = fs.readdirSync(packagesDir);
-const plugins = packages.filter(
-  (x) => x.startsWith('plugin-') && !x.includes('-transform'),
-);
 
 // tsconfig root
 fs.writeJsonSync(
@@ -82,75 +69,4 @@ packages.forEach((p) => {
   pkg.files = ['dist', 'lib'];
   pkg.homepage = 'https://github.com/mrrs878/gear#readme';
   fs.writeJsonSync(pkgPath, pkg, { spaces: 2 });
-});
-
-// plugins readme
-plugins.forEach((p) => {
-  const name = p.split('-').slice(1).join('-');
-  const result = mustache.render(
-    readFileSyncSafe(path.join(rootDir, 'scripts/plugin-template.md')),
-    {
-      name,
-      importedName: _.camelCase(name.replace('-ssr', '')),
-      desc: fs.readJsonSync(path.join(packagesDir, p, 'package.json'))
-        .description,
-    },
-  );
-  fs.writeFileSync(path.join(packagesDir, p, 'README.md'), result);
-});
-
-// gear readme
-const readme = readFileSyncSafe(path.join(rootDir, 'README.md')).replace(
-  /## Plugins\s+([\w\W])*?\s+##/,
-  () => {
-    const content = plugins
-      .map((p) => {
-        const pkg = fs.readJsonSync(path.join(packagesDir, p, 'package.json'));
-        if (pkg.private) return;
-
-        const name = p.split('-').slice(1).join('-');
-        const badge = `[![npm](https://img.shields.io/npm/v/@gear/plugin-${name}.svg)](https://npm.im/@gear/plugin-${name})`
-          + ' '
-          + `[![gzip size](https://img.badgesize.io/https://unpkg.com/@gear/plugin-${name}/dist/index.min.js?compression=gzip)](https://unpkg.com/@gear/plugin-${name})`;
-        const desc = _.upperFirst(
-          pkg.description.replace('ByteMD plugin to ', ''),
-        );
-        // eslint-disable-next-line consistent-return
-        return `| [@gear/plugin-${name}](./packages/plugin-${name}) | ${badge} | ${desc} |`;
-      })
-      .filter((x) => x)
-      .join('\n');
-
-    return `## Plugins
-
-| Package | Status | Description |
-| --- | --- | --- |
-${content}
-
-##`;
-  },
-);
-
-if (!readFileSyncSafe(path.join(rootDir, 'README.md'))) {
-  fs.writeFileSync(path.join(rootDir, 'README.md'), readme);
-}
-
-// locales
-let importCode = '';
-const exportObject = {};
-packages.forEach((p) => {
-  const localeDir = path.join(packagesDir, p, 'src/locales');
-  if (fs.existsSync(localeDir) && fs.lstatSync(localeDir).isDirectory()) {
-    const locales = fs.readdirSync(localeDir).map((x) => x.replace('.json', ''));
-    const libName = p.startsWith('plugin') ? `@mrrs878/${p}` : p;
-
-    locales.forEach((l) => {
-      if (!exportObject[l]) exportObject[l] = {};
-
-      const varName = _.snakeCase(`${l}-${p}`);
-
-      importCode += `import ${varName} from '${libName}/lib/locales/${l}';\n`;
-      exportObject[l][_.snakeCase(p)] = varName;
-    });
-  }
 });
