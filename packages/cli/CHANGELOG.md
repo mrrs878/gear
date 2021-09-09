@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/mrrs878/gear/compare/@mrrs878/cli@0.1.1...@mrrs878/cli@0.1.2) (2021-09-09)
+
+
+### Performance Improvements
+
+* 添加加载动画 ([6d521b6](https://github.com/mrrs878/gear/commit/6d521b638d24c230dd00c8befd981733f65c5215))
+
+
+
+
+
 ## [0.1.1](https://github.com/mrrs878/gear/compare/@mrrs878/cli@0.1.0...@mrrs878/cli@0.1.1) (2021-09-08)
 
 
