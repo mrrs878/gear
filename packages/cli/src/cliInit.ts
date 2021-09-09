@@ -2,11 +2,12 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-07 20:34:07
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-07 21:54:22
+ * @LastEditTime: 2021-09-09 21:47:13
  * @FilePath: \gear\packages\cli\src\cliInit.ts
  */
 import program from 'commander';
 import chalk from 'chalk';
+import ora from 'ora';
 import fs from 'fs-extra';
 import path from 'path';
 import download from 'download-git-repo';
@@ -39,16 +40,19 @@ function bootstrap() {
   const url = tplObj[templateName];
 
   console.log(chalk.white('\n Start generating... \n'));
+  const spinner = ora('downloading template ...');
+  spinner.start();
   download(
-    `direct:${url}`,
+    url,
     projectName,
     { clone: true },
     (err: any) => {
       if (err) {
         console.log(chalk.red(`Generation failed. ${err}`));
+        spinner.stop();
         return;
       }
-      // 结束加载图标
+      spinner.stop();
       console.log(chalk.green('\n Generation completed!'));
       console.log('\n To get started');
       console.log(`\n    cd ${projectName} \n`);
