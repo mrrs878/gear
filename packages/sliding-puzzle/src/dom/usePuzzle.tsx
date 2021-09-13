@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 17:05:43
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-10 20:08:29
+ * @LastEditTime: 2021-09-13 14:53:01
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\usePuzzle.tsx
  */
 import {
@@ -15,6 +15,7 @@ interface IProps {
     width: number;
     height: number
   };
+  sliderRef: RefObject<HTMLDivElement>;
   onRelease: (moveX: number) => Promise<boolean>;
   onRefresh: () => Promise<boolean>;
 }
@@ -50,7 +51,6 @@ const verifyTrail = (trail: Array<number>) => {
 
 type UsePuzzle = (props: IProps) => ([
   {
-    ref: RefObject<HTMLDivElement>,
     left: number,
   },
   {
@@ -62,7 +62,6 @@ type UsePuzzle = (props: IProps) => ([
 ]);
 
 const usePuzzle: UsePuzzle = (props: IProps) => {
-  const sliderRef = useRef<HTMLDivElement>(null);
   const [dragStatus, setDragStatus] = useState(DragStatus.pending);
   const [getPuzzleImgLoading, setGetPuzzleImgLoading] = useState(false);
   const [moveX, setMoveX] = useState(0);
@@ -149,16 +148,15 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
   }, [handleDragEnd, handleDragMove]);
 
   useEffect(() => {
-    const slider = sliderRef.current;
+    const slider = props.sliderRef.current;
     slider?.addEventListener('mousedown', handleDragStart);
     return () => {
       slider?.removeEventListener('mousedown', handleDragStart);
     };
-  }, [handleDragStart]);
+  }, [handleDragStart, props.sliderRef]);
 
   return [
     {
-      ref: sliderRef,
       left: sliderPositionLeft,
     },
     {

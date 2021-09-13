@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-20 11:17:40
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-10 20:08:41
+ * @LastEditTime: 2021-09-13 14:53:48
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\index.tsx
  */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -11,7 +11,7 @@
 import {
   always, and, cond, equals, includes, pick,
 } from 'ramda';
-import React, { CSSProperties, useMemo } from 'react';
+import React, { CSSProperties, useMemo, useRef } from 'react';
 import { DragStatus, usePuzzle, VerifyStatus } from './usePuzzle';
 
 interface IMVerifyProps {
@@ -82,7 +82,9 @@ type FormatProps = (props: IMVerifyProps) => Pick<IMVerifyProps, 'onRelease' | '
 const formatProps:FormatProps = pick(['onRelease', 'onRefresh']);
 
 const MVerify = (props: IMVerifyProps) => {
+  const sliderRef = useRef<HTMLDivElement>(null);
   const [slider, block, verifyStatus, dragStatus, loading] = usePuzzle({
+    sliderRef,
     containerSize,
     ...formatProps(props),
   });
@@ -129,7 +131,7 @@ const MVerify = (props: IMVerifyProps) => {
           `}
         >
           <div style={{ width: `${slider.left}px` }} className="puzzle-slider-mask" />
-          <div style={{ left: `${slider.left}px` }} ref={slider.ref} className="puzzle-slider">
+          <div style={{ left: `${slider.left}px` }} ref={sliderRef} className="puzzle-slider">
             {
               getSliderIcon()
             }

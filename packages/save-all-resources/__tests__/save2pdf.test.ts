@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-01 20:43:51
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-03 20:08:56
+ * @LastEditTime: 2021-09-13 15:28:22
  * @FilePath: \gear\packages\save-all-resources\__tests__\save2pdf.test.ts
  */
 import puppeteer from 'puppeteer';
@@ -13,7 +13,7 @@ jest.setTimeout(20000);
 
 describe('save2pdf tests', () => {
   it('puppeteer should work', async () => {
-    console.log('puppeteer starting...');
+    console.log = jest.fn();
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     await browser.newPage();
     await browser.close();
