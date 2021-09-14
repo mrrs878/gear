@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.6...@mrrs878/sliding-puzzle@0.0.7) (2021-09-14)
+
+
+### Performance Improvements
+
+* 修改usePuzzle中slider ([376faf7](https://github.com/mrrs878/gear/commit/376faf7a4e8f27abfa2b9bbee2ee7425d676a0df))
+
+
+
+
+
 ## [0.0.6](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.5...@mrrs878/sliding-puzzle@0.0.6) (2021-09-10)
 
 
