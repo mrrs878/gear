@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 17:05:43
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-13 14:53:01
+ * @LastEditTime: 2021-09-18 20:02:01
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\usePuzzle.tsx
  */
 import {
@@ -50,6 +50,7 @@ const verifyTrail = (trail: Array<number>) => {
 };
 
 type UsePuzzle = (props: IProps) => ([
+  boolean,
   {
     left: number,
   },
@@ -58,12 +59,11 @@ type UsePuzzle = (props: IProps) => ([
   },
   VerifyStatus,
   DragStatus,
-  boolean,
 ]);
 
 const usePuzzle: UsePuzzle = (props: IProps) => {
+  const [loading, setLoading] = useState(false);
   const [dragStatus, setDragStatus] = useState(DragStatus.pending);
-  const [getPuzzleImgLoading, setGetPuzzleImgLoading] = useState(false);
   const [moveX, setMoveX] = useState(0);
   const trail = useRef<Array<number>>([]);
   const [verifyStatus, setVerifyStatus] = useState(VerifyStatus.pending);
@@ -83,11 +83,10 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
       setMoveX(0);
       setVerifyStatus(VerifyStatus.pending);
       setDragStatus(DragStatus.pending);
-      setGetPuzzleImgLoading(true);
+      setLoading(true);
       await props.onRefresh();
-      setGetPuzzleImgLoading(false);
-    } catch (e) {
-      setGetPuzzleImgLoading(false);
+    } finally {
+      setLoading(false);
     }
   }, [props]);
 
@@ -122,6 +121,7 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
   const handleDragEnd = useCallback(async () => {
     try {
       if (dragStatus !== DragStatus.start) return;
+      setLoading(true);
       document.removeEventListener('mousemove', handleDragMove);
       document.removeEventListener('mouseup', handleDragEnd);
       setDragStatus(DragStatus.end);
@@ -135,6 +135,8 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
       else onFail();
     } catch (error) {
       onFail();
+    } finally {
+      setLoading(false);
     }
   }, [dragStatus, handleDragMove, moveX, onFail, onSuccess, props]);
 
@@ -156,6 +158,7 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
   }, [handleDragStart, props.sliderRef]);
 
   return [
+    loading,
     {
       left: sliderPositionLeft,
     },
@@ -164,7 +167,6 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
     },
     verifyStatus,
     dragStatus,
-    getPuzzleImgLoading,
   ];
 };
 

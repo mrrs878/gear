@@ -2,16 +2,18 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-20 11:17:40
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-13 14:53:48
+ * @LastEditTime: 2021-09-18 20:01:39
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\index.tsx
  */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import {
-  always, and, cond, equals, includes, pick,
+  always, and, cond, equals, includes, pick, isNil,
 } from 'ramda';
-import React, { CSSProperties, useMemo, useRef } from 'react';
+import React, {
+  CSSProperties, useMemo, useRef, Suspense, useState,
+} from 'react';
 import { DragStatus, usePuzzle, VerifyStatus } from './usePuzzle';
 
 interface IMVerifyProps {
@@ -83,7 +85,8 @@ const formatProps:FormatProps = pick(['onRelease', 'onRefresh']);
 
 const MVerify = (props: IMVerifyProps) => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [slider, block, verifyStatus, dragStatus, loading] = usePuzzle({
+  const [refreshing, setRefreshing] = useState(false);
+  const [loading, slider, block, verifyStatus, dragStatus] = usePuzzle({
     sliderRef,
     containerSize,
     ...formatProps(props),
@@ -94,56 +97,69 @@ const MVerify = (props: IMVerifyProps) => {
     [dragStatus, verifyStatus],
   );
 
+  const spinning = loading || isNil(props.background)
+    || isNil(props.block) || refreshing;
+
   return (
-    <div className="puzzle-container">
-      <p>请完成以下验证后继续:</p>
-      <div
-        style={{
-          zIndex: loading ? 0 : 1,
-          width: containerSize.width,
-          height: containerSize.height,
-          position: 'relative',
-        }}
-      >
-        <Spin
-          spinning={loading}
+    <Suspense fallback={() => <Spin spinning />}>
+      <div className="puzzle-container">
+        <p>请完成以下验证后继续:</p>
+        <div
+          style={{
+            zIndex: loading ? 0 : 1,
+            width: containerSize.width,
+            height: containerSize.height,
+            position: 'relative',
+          }}
         >
-          <>
-            <img src={props.background} alt="" srcSet="" width={containerSize.width} height={containerSize.height} crossOrigin="anonymous" />
-            <div onClick={props.onRefresh} className="puzzle-refresh">
-              <RefreshIcon />
-            </div>
-            <img src={props.block} alt="" srcSet="" className="puzzle-block" style={{ left: `${block.left}px` }} />
-            <span
-              className={`puzzle-tip
+          <Spin
+            spinning={spinning}
+          >
+            <>
+              <img src={props.background} alt="" srcSet="" width={containerSize.width} height={containerSize.height} crossOrigin="anonymous" />
+              <div
+                onClick={async () => {
+                  setRefreshing(true);
+                  await props.onRefresh();
+                  setRefreshing(false);
+                }}
+                className="puzzle-refresh"
+              >
+                <RefreshIcon />
+              </div>
+              <img src={props.block} alt="" srcSet="" className="puzzle-block" style={{ left: `${block.left}px` }} />
+              <span
+                className={`puzzle-tip
                 ${verifyStatus === VerifyStatus.success ? 'puzzle-tip-success' : ''}
                 ${verifyStatus === VerifyStatus.fail ? 'puzzle-tip-fail' : ''}
               `}
-            >
-              { VERIFY_TIPS[verifyStatus] }
-            </span>
-          </>
-        </Spin>
-        <div
-          className={`puzzle-slider-container
+              >
+                { VERIFY_TIPS[verifyStatus] }
+              </span>
+            </>
+          </Spin>
+          <div
+            className={`puzzle-slider-container
             ${verifyStatus === VerifyStatus.success ? 'puzzle-slider-success' : ''}
             ${verifyStatus === VerifyStatus.fail ? 'puzzle-slider-fail' : ''}
+            ${loading ? 'inactive' : ''}
           `}
-        >
-          <div style={{ width: `${slider.left}px` }} className="puzzle-slider-mask" />
-          <div style={{ left: `${slider.left}px` }} ref={sliderRef} className="puzzle-slider">
-            {
+          >
+            <div style={{ width: `${slider.left}px` }} className="puzzle-slider-mask" />
+            <div style={{ left: `${slider.left}px` }} ref={sliderRef} className="puzzle-slider">
+              {
               getSliderIcon()
             }
-          </div>
-          <span className="puzzle-slider-text">
-            {
+            </div>
+            <span className="puzzle-slider-text">
+              {
               verifyStatus === VerifyStatus.success ? '验证通过' : '向右滑动填充拼图'
             }
-          </span>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 
