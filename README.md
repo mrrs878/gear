@@ -13,3 +13,5 @@
 ![npm](https://img.shields.io/npm/v/@mrrs878/hooks?label=%40mrrs878%2Fhooks)
 
 ![npm](https://img.shields.io/npm/v/@mrrs878/save-all-resources?label=%40mrrs878%2Fsave-all-resources)
+
+![npm](https://img.shields.io/npm/v/@mrrs878/sliding-puzzle?label=%40mrrs878%2Fsliding-puzzle)
