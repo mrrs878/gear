@@ -2,23 +2,24 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-20 11:17:40
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-18 20:01:39
+ * @LastEditTime: 2021-09-22 19:59:11
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\index.tsx
  */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import {
-  always, and, cond, equals, includes, pick, isNil,
+  always, and, cond, equals, includes, pick,
 } from 'ramda';
 import React, {
-  CSSProperties, useMemo, useRef, Suspense, useState,
+  CSSProperties, useMemo, useRef, Suspense, useState, useEffect,
 } from 'react';
 import { DragStatus, usePuzzle, VerifyStatus } from './usePuzzle';
 
 interface IMVerifyProps {
   background: string;
   block: string;
+  loading: boolean;
   // eslint-disable-next-line react/no-unused-prop-types
   onRelease: (moveX: number) => Promise<boolean>;
   onRefresh: () => Promise<boolean>;
@@ -92,13 +93,19 @@ const MVerify = (props: IMVerifyProps) => {
     ...formatProps(props),
   });
 
+  useEffect(() => {
+    if (props.background) setRefreshing(false);
+  }, [props.background]);
+
   const getSliderIcon = useMemo(
     () => SliderIcon({ verifyStatus, dragStatus }),
     [dragStatus, verifyStatus],
   );
 
-  const spinning = loading || isNil(props.background)
-    || isNil(props.block) || refreshing;
+  const spinning = useMemo(
+    () => (loading || !(props.background) || !(props.block) || refreshing || props.loading),
+    [loading, props.background, props.block, refreshing, props.loading],
+  );
 
   return (
     <Suspense fallback={() => <Spin spinning />}>
@@ -115,34 +122,32 @@ const MVerify = (props: IMVerifyProps) => {
           <Spin
             spinning={spinning}
           >
-            <>
-              <img src={props.background} alt="" srcSet="" width={containerSize.width} height={containerSize.height} crossOrigin="anonymous" />
-              <div
-                onClick={async () => {
-                  setRefreshing(true);
-                  await props.onRefresh();
-                  setRefreshing(false);
-                }}
-                className="puzzle-refresh"
-              >
-                <RefreshIcon />
-              </div>
-              <img src={props.block} alt="" srcSet="" className="puzzle-block" style={{ left: `${block.left}px` }} />
-              <span
-                className={`puzzle-tip
+            <img src={props.background} alt="" srcSet="" width={containerSize.width} height={containerSize.height} style={{ opacity: props.background ? 1 : 0 }} crossOrigin="anonymous" />
+            <div
+              onClick={async () => {
+                setRefreshing(true);
+                await props.onRefresh();
+                setRefreshing(false);
+              }}
+              className="puzzle-refresh"
+            >
+              <RefreshIcon />
+            </div>
+            <img src={props.block} alt="" srcSet="" className="puzzle-block" style={{ left: `${block.left}px` }} />
+            <span
+              className={`puzzle-tip
                 ${verifyStatus === VerifyStatus.success ? 'puzzle-tip-success' : ''}
                 ${verifyStatus === VerifyStatus.fail ? 'puzzle-tip-fail' : ''}
               `}
-              >
-                { VERIFY_TIPS[verifyStatus] }
-              </span>
-            </>
+            >
+              { VERIFY_TIPS[verifyStatus] }
+            </span>
           </Spin>
           <div
             className={`puzzle-slider-container
             ${verifyStatus === VerifyStatus.success ? 'puzzle-slider-success' : ''}
             ${verifyStatus === VerifyStatus.fail ? 'puzzle-slider-fail' : ''}
-            ${loading ? 'inactive' : ''}
+            ${spinning ? 'inactive' : ''}
           `}
           >
             <div style={{ width: `${slider.left}px` }} className="puzzle-slider-mask" />

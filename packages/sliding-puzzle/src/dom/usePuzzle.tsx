@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 17:05:43
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-18 20:02:01
+ * @LastEditTime: 2021-09-22 19:59:20
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\usePuzzle.tsx
  */
 import {
@@ -80,11 +80,11 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
 
   const reset = useCallback(async () => {
     try {
-      setMoveX(0);
       setVerifyStatus(VerifyStatus.pending);
       setDragStatus(DragStatus.pending);
       setLoading(true);
       await props.onRefresh();
+      setMoveX(0);
     } finally {
       setLoading(false);
     }
