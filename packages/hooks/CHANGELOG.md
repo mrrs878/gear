@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mrrs878/gear/compare/@mrrs878/hooks@0.2.0...@mrrs878/hooks@0.3.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* lint ([a26d218](https://github.com/mrrs878/gear/commit/a26d2189c30da53ec14d970f83e8132a03d53aca))
+
+
+### Features
+
+* 添加useWatch ([4797a4b](https://github.com/mrrs878/gear/commit/4797a4ba48fecc157ff0ee1d9a0d9bc80bc8701b))
+
+
+
+
+
 # [0.2.0](https://github.com/mrrs878/gear/compare/@mrrs878/hooks@0.0.3...@mrrs878/hooks@0.2.0) (2021-08-31)
 
 
