@@ -1,10 +1,10 @@
 /*
- * @Author: your name
+ * @Author: mrrs878@foxmail.com
  * @Date: 2021-01-14 22:40:55
- * @LastEditTime: 2021-08-18 19:05:37
+ * @LastEditTime: 2021-09-22 21:32:08
  * @LastEditors: mrrs878@foxmail.com
  * @Description: In User Settings Edit
- * @FilePath: \wrench\packages\hooks\src\useScroll.ts
+ * @FilePath: \gear\packages\hooks\src\useScroll.ts
  */
 
 import { useEffect, useRef, useState } from 'react';
@@ -51,6 +51,7 @@ function useScroll(target?: Target, cb: ScrollListenerController = () => true): 
     }
 
     el.addEventListener('scroll', listener);
+    // eslint-disable-next-line consistent-return
     return () => {
       el.removeEventListener('scroll', listener);
     };
