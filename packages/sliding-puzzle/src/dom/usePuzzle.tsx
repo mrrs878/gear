@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 17:05:43
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-22 19:59:20
+ * @LastEditTime: 2021-09-23 11:10:41
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\usePuzzle.tsx
  */
 import {
@@ -110,7 +110,7 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
   const handleDragMove = useCallback((e: any) => {
     if (dragStatus !== DragStatus.start) return false;
     const eventX = e.clientX || e.touches[0].clientX;
-    const eventY = (e.clientX || e.touches[0].clientY) as number;
+    const eventY = (e.clientY || e.touches[0].clientY) as number;
     const newMoveX = eventX - originPosition.x;
     if (newMoveX < 10 || newMoveX >= props.containerSize.width) return false;
     setMoveX(newMoveX);
