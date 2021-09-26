@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-19 19:50:16
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-23 19:48:32
+ * @LastEditTime: 2021-09-26 19:05:40
  * @FilePath: \gear\packages\sliding-puzzle\__tests__\usePuzzle.test.tsx
  */
 import { renderHook, act } from '@testing-library/react-hooks';
@@ -55,7 +55,7 @@ describe('usePuzzle', () => {
       current: document.createElement('div'),
     };
     const onRelease = jest.fn();
-    const { result } = renderHook(() => usePuzzle({
+    renderHook(() => usePuzzle({
       containerSize: { width: 350, height: 200 },
       sliderRef,
       onRefresh: () => Promise.resolve(true),
@@ -72,8 +72,6 @@ describe('usePuzzle', () => {
       await sleep(50);
       fireEvent.mouseUp(window.document);
     });
-    const [,,,, dragStatus] = result.current;
-    expect(dragStatus).toEqual(DragStatus.end);
     expect(onRelease).toBeCalledTimes(0);
   });
 
