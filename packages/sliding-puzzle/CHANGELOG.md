@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.10](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.9...@mrrs878/sliding-puzzle@0.0.10) (2021-09-26)
+
+
+### Performance Improvements
+
+* 优化体验 ([8e8389e](https://github.com/mrrs878/gear/commit/8e8389e04a1c28a6dd6120c0cd76c50f187185f5))
+
+
+
+
+
 ## [0.0.9](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.8...@mrrs878/sliding-puzzle@0.0.9) (2021-09-23)
 
 
