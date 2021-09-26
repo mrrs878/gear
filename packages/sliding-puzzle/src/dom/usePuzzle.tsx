@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 17:05:43
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-23 11:10:41
+ * @LastEditTime: 2021-09-26 19:00:25
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\usePuzzle.tsx
  */
 import {
@@ -32,6 +32,8 @@ export enum VerifyStatus {
   success,
   fail,
 }
+
+const sleep = (timeout: number) => new Promise((resolve) => setTimeout(resolve, timeout));
 
 const sum = (a: number, b: number) => a + b;
 
@@ -124,13 +126,14 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
       setLoading(true);
       document.removeEventListener('mousemove', handleDragMove);
       document.removeEventListener('mouseup', handleDragEnd);
-      setDragStatus(DragStatus.end);
       const isHuman = verifyTrail(trail.current);
       if (!isHuman) {
         onFail();
         return;
       }
       const res = await props.onRelease(moveX);
+      await sleep(200);
+      setDragStatus(DragStatus.end);
       if (res) onSuccess();
       else onFail();
     } catch (error) {

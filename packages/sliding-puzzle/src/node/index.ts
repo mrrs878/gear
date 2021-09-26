@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 19:40:14
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-10 19:40:15
+ * @LastEditTime: 2021-09-26 16:12:48
  * @FilePath: \gear\packages\sliding-puzzle\src\node\index.ts
  */
 import { createCanvas, loadImage } from 'canvas';
@@ -70,7 +70,7 @@ async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
     const blockCanvasCtx = blockCanvas.getContext('2d');
 
     const x = randomNumber(backgroundWidth * 0.25, backgroundWidth * 0.75);
-    const y = randomNumber(backgroundHeight * 0.25, backgroundHeight * 0.75);
+    const y = randomNumber(blockWidth, backgroundHeight - blockWidth);
 
     // eslint-disable-next-line no-bitwise
     const blockShape = (Math.random() * 100) % 3 >> 0;
@@ -78,8 +78,8 @@ async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
     drawLine(imageCanvasCtx, x, y, 'fill', blockShape, blockWidth, circleRadius);
     drawLine(blockCanvasCtx, x, y, 'clip', blockShape, blockWidth, circleRadius);
     const image = await loadImage(img);
-    blockCanvasCtx?.drawImage(image, 0, 0, backgroundWidth, backgroundHeight);
-    imageCanvasCtx?.drawImage(image, 0, 0, backgroundWidth, backgroundHeight);
+    blockCanvasCtx?.drawImage(image, 0, 0);
+    imageCanvasCtx?.drawImage(image, 0, 0);
     const newY = y - circleRadius * 2 - 1 + BLOCK_POSITION_FIX[blockShape];
     const imageData = blockCanvasCtx?.getImageData(x - 3, newY, L, L);
     if (imageData) {

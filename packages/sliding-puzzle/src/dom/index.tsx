@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-20 11:17:40
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-22 19:59:11
+ * @LastEditTime: 2021-09-26 19:00:12
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\index.tsx
  */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -146,6 +146,7 @@ const MVerify = (props: IMVerifyProps) => {
           <div
             className={`puzzle-slider-container
             ${verifyStatus === VerifyStatus.success ? 'puzzle-slider-success' : ''}
+            ${dragStatus === DragStatus.start ? 'puzzle-slider-start' : ''}
             ${verifyStatus === VerifyStatus.fail ? 'puzzle-slider-fail' : ''}
             ${spinning ? 'inactive' : ''}
           `}
@@ -153,13 +154,13 @@ const MVerify = (props: IMVerifyProps) => {
             <div style={{ width: `${slider.left}px` }} className="puzzle-slider-mask" />
             <div style={{ left: `${slider.left}px` }} ref={sliderRef} className="puzzle-slider">
               {
-              getSliderIcon()
-            }
+                getSliderIcon()
+              }
             </div>
             <span className="puzzle-slider-text">
               {
-              verifyStatus === VerifyStatus.success ? '验证通过' : '向右滑动填充拼图'
-            }
+                verifyStatus === VerifyStatus.success ? '验证通过' : '向右滑动填充拼图'
+              }
             </span>
           </div>
         </div>

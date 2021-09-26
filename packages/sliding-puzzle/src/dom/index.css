@@ -64,7 +64,7 @@
   margin-top: 15px;
   background: #f7f9fa;
   color: #45494c;
-  border: 1px solid #e4e7eb;
+  /* border: 1px solid #e4e7eb; */
 }
 .puzzle-slider-container.inactive {
   pointer-events: none;
@@ -78,7 +78,6 @@
 }
 .puzzle-slider-success .puzzle-slider-mask {
   width: 100% !important;
-  height: 38px;
   border: 1px solid #52CCBA;
   background-color: #D2F4EF;
 }
@@ -91,16 +90,17 @@
 }
  
 .puzzle-slider-fail .puzzle-slider {
-  height: 38px;
-  top: -1px;
   border: 1px solid #f57a7a;
   background-color: #f57a7a !important;
 }
- 
 .puzzle-slider-fail .puzzle-slider-mask {
-  height: 38px;
   border: 1px solid #f57a7a;
   background-color: #fce1e1;
+}
+
+.puzzle-slider-start .puzzle-slider-mask {
+  border: 1px solid #1991FA;
+  background: #D1E9FE;
 }
 
 .puzzle-tip {
@@ -126,9 +126,6 @@
   left: 0;
   top: 0;
   height: 40px;
-  border: 0 solid #1991FA;
-  background: #D1E9FE;
-  transition: background .2s liner;
 }
  
 .puzzle-slider {
@@ -140,7 +137,7 @@
   background: #fff;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   cursor: move;
-  transition: background .2s linear;
+  transition: background .1s linear;
 }
  
 .puzzle-slider:hover {
