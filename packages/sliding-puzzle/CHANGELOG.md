@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.11](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.10...@mrrs878/sliding-puzzle@0.0.11) (2021-09-27)
+
+
+### Performance Improvements
+
+* 位置计算时去除useMemo ([d1b0539](https://github.com/mrrs878/gear/commit/d1b0539a5164038bc13d13d5075bf931dfb113ce))
+
+
+
+
+
 ## [0.0.10](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.9...@mrrs878/sliding-puzzle@0.0.10) (2021-09-26)
 
 
