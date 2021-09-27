@@ -2,12 +2,11 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 17:05:43
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-26 19:00:25
+ * @LastEditTime: 2021-09-26 20:22:26
  * @FilePath: \gear\packages\sliding-puzzle\src\dom\usePuzzle.tsx
  */
 import {
-  RefObject,
-  useCallback, useEffect, useMemo, useRef, useState,
+  RefObject, useCallback, useEffect, useRef, useState,
 } from 'react';
 
 interface IProps {
@@ -71,14 +70,8 @@ const usePuzzle: UsePuzzle = (props: IProps) => {
   const [verifyStatus, setVerifyStatus] = useState(VerifyStatus.pending);
   const [originPosition, setOriginPosition] = useState({ x: 0, y: 0 });
 
-  const imgPositionLeft = useMemo(
-    () => inRange(moveX, [10, props.containerSize.width - 65]),
-    [props.containerSize.width, moveX],
-  );
-  const sliderPositionLeft = useMemo(
-    () => inRange(moveX, [0, props.containerSize.width - 40]),
-    [props.containerSize.width, moveX],
-  );
+  const imgPositionLeft = inRange(moveX, [10, props.containerSize.width - 65]);
+  const sliderPositionLeft = inRange(moveX, [0, props.containerSize.width - 40]);
 
   const reset = useCallback(async () => {
     try {

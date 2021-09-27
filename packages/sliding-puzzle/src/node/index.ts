@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-09-10 19:40:14
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-09-26 16:12:48
+ * @LastEditTime: 2021-09-26 20:32:49
  * @FilePath: \gear\packages\sliding-puzzle\src\node\index.ts
  */
 import { createCanvas, loadImage } from 'canvas';
@@ -70,7 +70,7 @@ async function getPuzzleImg(img: string, config = DEFAULT_CONFIG) {
     const blockCanvasCtx = blockCanvas.getContext('2d');
 
     const x = randomNumber(backgroundWidth * 0.25, backgroundWidth * 0.75);
-    const y = randomNumber(blockWidth, backgroundHeight - blockWidth);
+    const y = randomNumber(blockWidth - 20, backgroundHeight - blockWidth - 20);
 
     // eslint-disable-next-line no-bitwise
     const blockShape = (Math.random() * 100) % 3 >> 0;
