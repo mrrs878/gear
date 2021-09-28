@@ -1,7 +1,7 @@
 /*
  * @Author: mrrs878
  * @Date: 2020-12-08 22:50:25
- * @LastEditTime: 2021-08-27 20:31:33
+ * @LastEditTime: 2021-09-28 21:27:44
  * @LastEditors: mrrs878@foxmail.com
  * @Description: useRequest hook
  * @FilePath: \gear\packages\hooks\src\useRequest.ts
@@ -17,8 +17,7 @@ import { useEffect, useState, useCallback } from 'react';
  * @returns 手动发送请求
  * @returns 重新发送请求(使用上一次的参数)
 */
-function useRequest<P, T>(api: (params: P) => Promise<T>, visible = true, params?: P)
-  : [boolean, T | undefined, (params?: P) => Promise<T>, () => Promise<T>] {
+function useRequest<P, T>(api: (params: P) => Promise<T>, visible = true, params?: P) {
   const [res, setRes] = useState<T>();
   const [loading, setLoading] = useState(() => false);
   const [newParams] = useState(() => params);
@@ -35,7 +34,7 @@ function useRequest<P, T>(api: (params: P) => Promise<T>, visible = true, params
     if (visible) doFetch(params);
   }, [doFetch, params, visible]);
 
-  return [loading, res, doFetch, doFetch];
+  return <const>([loading, res, doFetch, doFetch]);
 }
 
 export default useRequest;

@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-18 20:47:59
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-26 21:55:09
+ * @LastEditTime: 2021-09-28 21:28:50
  * @FilePath: \gear\packages\hooks\__tests__\useRequest.test.ts
  */
 import { act, renderHook } from '@testing-library/react-hooks';
@@ -39,13 +39,9 @@ const GET_USER_INFO = (id: number) => new Promise((resolve) => setTimeout(
 ));
 
 describe('@mrrs878/hooks/useRequest', () => {
-  const setUp = (api, authFetch, params?) => renderHook(() => {
-    const [loading, res, getData] = useRequest(api, authFetch, params);
-    return [loading, res, getData];
-  });
   it('fetch response', async () => {
-    const hook = setUp(GET_DATA, false);
-    const [,, getData] = (hook.result.current) as ReturnType<typeof useRequest>;
+    const { result } = renderHook(() => useRequest(GET_DATA, false));
+    const [,, getData] = result.current;
     let res = {};
     await act(async () => {
       res = await getData();
