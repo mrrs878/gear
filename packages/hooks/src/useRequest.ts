@@ -1,38 +1,30 @@
 /*
  * @Author: mrrs878
  * @Date: 2020-12-08 22:50:25
- * @LastEditTime: 2021-09-28 21:27:44
+ * @LastEditTime: 2021-09-30 14:02:47
  * @LastEditors: mrrs878@foxmail.com
  * @Description: useRequest hook
  * @FilePath: \gear\packages\hooks\src\useRequest.ts
  */
 import { useEffect, useState, useCallback } from 'react';
+import { useCompare } from './useCompare';
 
-/**
- * @param api 发送请求的函数
- * @param visible 是否自动触发
- * @param params 请求的参数
- * @returns 是否在请求中
- * @returns 接口返回值
- * @returns 手动发送请求
- * @returns 重新发送请求(使用上一次的参数)
-*/
 function useRequest<P, T>(api: (params: P) => Promise<T>, visible = true, params?: P) {
   const [res, setRes] = useState<T>();
   const [loading, setLoading] = useState(() => false);
-  const [newParams] = useState(() => params);
+  const [newParams] = useCompare(params);
 
-  const doFetch = useCallback(async (rest = null) => {
+  const doFetch = useCallback(async (rest = newParams) => {
     setLoading(true);
-    const tmp = await api(rest || newParams);
+    const tmp = await api(rest);
     setRes(tmp);
     setLoading(false);
     return tmp;
   }, [api, newParams]);
 
   useEffect(() => {
-    if (visible) doFetch(params);
-  }, [doFetch, params, visible]);
+    if (visible) doFetch(newParams);
+  }, [doFetch, newParams, visible]);
 
   return <const>([loading, res, doFetch, doFetch]);
 }
