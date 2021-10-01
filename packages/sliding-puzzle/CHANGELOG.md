@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.12](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.11...@mrrs878/sliding-puzzle@0.0.12) (2021-10-01)
+
+
+### Performance Improvements
+
+* 修改getPuzzleImg中img参数类型 ([4b798c2](https://github.com/mrrs878/gear/commit/4b798c21d3cf34036d73c4c58166a33c201593b8))
+
+
+
+
+
 ## [0.0.11](https://github.com/mrrs878/gear/compare/@mrrs878/sliding-puzzle@0.0.10...@mrrs878/sliding-puzzle@0.0.11) (2021-09-27)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/mrrs878/gear/compare/@mrrs878/hooks@0.3.1...@mrrs878/hooks@0.3.2) (2021-10-01)
+
+
+### Bug Fixes
+
+* 修复useRequest设置visible为true时一直发送请求的bug ([0532504](https://github.com/mrrs878/gear/commit/05325042354023b0d015028e3bc06ddc341d77d8))
+
+
+
+
+
 ## [0.3.1](https://github.com/mrrs878/gear/compare/@mrrs878/hooks@0.3.0...@mrrs878/hooks@0.3.1) (2021-09-28)
 
 
