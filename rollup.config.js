@@ -116,20 +116,27 @@ const configs = packages
   })
   .flat();
 
-/** @type {import('rollup').RollupOptions} */
-const styleCommon = {
-  input: 'packages/sliding-puzzle/src/dom/index.css',
-  output: {
-    file: 'style.js', // We don't need this file
-  },
-};
-
 const styleConfigs = [
   {
-    ...styleCommon,
+    input: 'packages/sliding-puzzle/src/dom/index.css',
+    output: {
+      file: 'style.js', // We don't need this file
+    },
     plugins: [
       postcss({
         extract: path.resolve(__dirname, 'packages/sliding-puzzle/dist/index.css'),
+        minimize: production,
+      }),
+    ],
+  },
+  {
+    input: 'packages/tabbar/src/index.css',
+    output: {
+      file: 'style.js', // We don't need this file
+    },
+    plugins: [
+      postcss({
+        extract: path.resolve(__dirname, 'packages/tabbar/dist/index.css'),
         minimize: production,
       }),
     ],
