@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/mrrs878/gear/compare/@mrrs878/hooks@0.3.2...@mrrs878/hooks@0.3.3) (2021-10-09)
+
+
+### Bug Fixes
+
+* version ([ef09d64](https://github.com/mrrs878/gear/commit/ef09d64eb3f21e10c7816ccd111613928e8e6e02))
+
+
+
+
+
 ## [0.3.2](https://github.com/mrrs878/gear/compare/@mrrs878/hooks@0.3.1...@mrrs878/hooks@0.3.2) (2021-10-01)
 
 
